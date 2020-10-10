@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\TestNotification;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasMany;
@@ -103,6 +104,8 @@ class Customer extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new TestNotification(),
+        ];
     }
 }

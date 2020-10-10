@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
@@ -44,10 +45,6 @@ class OrderDetail extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            BelongsTo::make('Order', 'order', Order::class),
-            BelongsTo::make('Services', 'service', Service::class),
-            HasMany::make('Invoices', 'invoice', Invoice::class),
-            HasMany::make('Revisions', 'revision', Revision::class),
             Number::make('Totale', 'total'),
             Number::make('VAT', 'vat'),
             Number::make('Quantity', 'quantity'),

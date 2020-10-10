@@ -4,9 +4,11 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -45,6 +47,13 @@ class Order extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+            BelongsToMany::make('Services', 'services', Service::class)->fields(function () {
+                return [
+                    Number::make('Totale', 'total'),
+                    Number::make('VAT', 'vat'),
+                    Number::make('Quantity', 'quantity'),
+                ];
+            }),
             BelongsTo::make('Customer', 'customer', Customer::class),
             DateTime::make('Date', 'date'),
             Select::make('Status', 'status')->
@@ -55,7 +64,6 @@ class Order extends Resource
                 'C' => 'Completed',
                 'W' => 'Waiting for client review',
             ])->displayUsingLabels(),
-            HasMany::make('Order Detail', 'orderDetail', OrderDetail::class),
         ];
     }
 

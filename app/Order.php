@@ -10,11 +10,13 @@ class Order extends Model
         'date' => 'datetime'
     ];
 
-    public function customer(){
+    public function customer()
+    {
         return $this->belongsTo(Customer::class, 'customer_id');
     }
 
-    public function orderDetail(){
-        return $this->hasMany(OrderDetail::class, 'order_id');
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'order_details', 'service_id', 'order_id');
     }
 }

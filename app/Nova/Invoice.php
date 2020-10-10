@@ -45,7 +45,6 @@ class Invoice extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            BelongsTo::make('Order Detail', 'orderDetail', OrderDetail::class),
             Date::make('Date', 'date'),
             Number::make('Total', 'total'),
             Number::make('VAT', 'vat'),

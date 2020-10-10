@@ -45,7 +45,6 @@ class Revision extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            BelongsTo::make('Order Detail', 'orderDetail', OrderDetail::class),
             DateTime::make('Date', 'date'),
             Textarea::make('Description', 'description'),
             Select::make('Status', 'status')->
