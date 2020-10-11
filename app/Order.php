@@ -17,6 +17,7 @@ class Order extends Model
 
     public function services()
     {
-        return $this->belongsToMany(Service::class, 'order_details', 'service_id', 'order_id');
+        return $this->belongsToMany(Service::class, 'order_details', 'order_id', 'service_id')
+            ->withPivot(['total', 'vat', 'quantity']);
     }
 }

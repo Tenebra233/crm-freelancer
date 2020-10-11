@@ -29,8 +29,7 @@
         "laravel/nova": "~3.0",
         "laravel/tinker": "^2.0",
         "moontoast/math": "1.1.2 as 1.999.999",
-        "spatie/once": "^1.1 | ^2.0",
-        "rurbani/notifications": "*"
+        "spatie/once": "^1.1 | ^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

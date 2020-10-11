@@ -48,6 +48,8 @@ class OrderDetail extends Resource
             Number::make('Totale', 'total'),
             Number::make('VAT', 'vat'),
             Number::make('Quantity', 'quantity'),
+            BelongsTo::make('Service', 'service', Service::class),
+            BelongsTo::make('Order', 'order', Order::class),
 
         ];
     }
