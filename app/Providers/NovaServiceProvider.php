@@ -76,7 +76,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new NovaToolPermissions(),
-            new EmailSender(),
         ];
     }
 
