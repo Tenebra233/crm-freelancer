@@ -10,6 +10,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel-notification-channels/webpush" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/nova-app" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/minishlink/web-push" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpmailer/phpmailer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-client" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-factory" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/rurbani/notifications" />

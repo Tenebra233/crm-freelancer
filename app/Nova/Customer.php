@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\SendEmailAction;
 use App\Nova\Actions\TestNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -113,7 +114,7 @@ class Customer extends Resource
     public function actions(Request $request)
     {
         return [
-            new TestNotification(),
+            new SendEmailAction()
         ];
     }
 }

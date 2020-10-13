@@ -133,6 +133,8 @@
       <path value="$PROJECT_DIR$/vendor/silvanite/novatoolpermissions" />
       <path value="$PROJECT_DIR$/vendor/silvanite/novafieldcheckboxes" />
       <path value="$PROJECT_DIR$/vendor/benjaminhirsch/nova-slug-field" />
+      <path value="$PROJECT_DIR$/vendor/rurbani/email-sender" />
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

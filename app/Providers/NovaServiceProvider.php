@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Rurbani\EmailSender\EmailSender;
 use Silvanite\NovaToolPermissions\NovaToolPermissions;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -28,9 +29,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function routes()
     {
         Nova::routes()
-                ->withAuthenticationRoutes()
-                ->withPasswordResetRoutes()
-                ->register();
+            ->withAuthenticationRoutes()
+            ->withPasswordResetRoutes()
+            ->register();
     }
 
     /**
@@ -75,6 +76,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new NovaToolPermissions(),
+            new EmailSender(),
         ];
     }
 

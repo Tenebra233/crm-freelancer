@@ -9,7 +9,9 @@
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "build-notifications": "cd nova-components/Notifications && npm run dev",
-        "build-notifications-prod": "cd nova-components/Notifications && npm run prod"
+        "build-notifications-prod": "cd nova-components/Notifications && npm run prod",
+        "build-email-sender": "cd nova-components/EmailSender && npm run dev",
+        "build-email-sender-prod": "cd nova-components/EmailSender && npm run prod"
     },
     "devDependencies": {
         "axios": "^0.19",
