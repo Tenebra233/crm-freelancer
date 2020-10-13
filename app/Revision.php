@@ -10,5 +10,9 @@ class Revision extends Model
         'date' => 'datetime'
     ];
 
+    public function orderDetail(){
+        return $this->belongsTo(OrderDetail::class, 'order_detail_id');
+    }
+
 
 }

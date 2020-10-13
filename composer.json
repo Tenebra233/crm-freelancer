@@ -29,7 +29,9 @@
         "laravel/nova": "~3.0",
         "laravel/tinker": "^2.0",
         "moontoast/math": "1.1.2 as 1.999.999",
-        "spatie/once": "^1.1 | ^2.0"
+        "silvanite/novatoolpermissions": "^1.1",
+        "spatie/once": "^1.1 | ^2.0",
+        "titasgailius/search-relations": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

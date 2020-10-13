@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Titasgailius\SearchRelations\SearchesRelations;
 
 class Order extends Resource
 {
@@ -37,6 +38,12 @@ class Order extends Resource
         'id',
     ];
 
+    use SearchesRelations;
+
+    public static $searchRelations = [
+        'customer' => ['name', 'surname'],
+    ];
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -53,8 +60,16 @@ class Order extends Resource
                     Number::make('VAT', 'vat'),
                     Number::make('Quantity', 'quantity'),
                 ];
+            })->display(function ($customer) {
+                return $customer->id . ' ' . $customer->title;
+
             }),
-            BelongsTo::make('Customer', 'customer', Customer::class),
+            BelongsTo::make('Customer', 'customer', Customer::class)->display(function ($service) {
+                return $service->id . ' ' . $service->title;
+
+            })->displayUsing(function($customer){
+                return $customer->name;
+            }),
             DateTime::make('Date', 'date'),
             Select::make('Status', 'status')->
             options([

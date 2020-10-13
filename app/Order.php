@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Titasgailius\SearchRelations\SearchesRelations;
 
 class Order extends Model
 {
+
+
+
     protected $casts = [
         'date' => 'datetime'
     ];

@@ -48,8 +48,13 @@ class OrderDetail extends Resource
             Number::make('Totale', 'total'),
             Number::make('VAT', 'vat'),
             Number::make('Quantity', 'quantity'),
-            BelongsTo::make('Service', 'service', Service::class),
+            BelongsTo::make('Service', 'service', Service::class)->display(function ($service) {
+                return $service->id . ' ' . $service->title;
+
+            }),
             BelongsTo::make('Order', 'order', Order::class),
+            HasMany::make('Invoices', 'invoice', Invoice::class),
+            HasMany::make('Revisions', 'revision', Revision::class),
 
         ];
     }

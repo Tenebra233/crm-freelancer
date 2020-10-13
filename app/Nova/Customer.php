@@ -4,6 +4,8 @@ namespace App\Nova;
 
 use App\Nova\Actions\TestNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -46,6 +48,9 @@ class Customer extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+            BelongsTo::make('User', 'user', User::class)->canSee(function ($request) {
+                return Gate::any('root');
+            }),
             Text::make('Name', 'name'),
             Text::make('Surname', 'surname'),
             Number::make('Phone', 'phone_number'),
@@ -57,9 +62,12 @@ class Customer extends Resource
             Text::make('Address', 'address'),
             Text::make('Second address', 'second_address')->nullable(true),
             Number::make('Postal code', 'postal_code'),
-            HasMany::make('Order', 'order', Order::class),
-            HasMany::make('Appointments', 'appointment', Appointment::class)
-
+            HasMany::make('Order', 'order', Order::class)->canSee(function ($request) {
+                return Gate::any('root');
+            }),
+            HasMany::make('Appointments', 'appointment', Appointment::class)->canSee(function ($request) {
+                return Gate::any('root');
+            }),
         ];
     }
 
