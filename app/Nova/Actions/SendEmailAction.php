@@ -2,12 +2,14 @@
 
 namespace App\Nova\Actions;
 
+use App\Template;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -42,8 +44,8 @@ class SendEmailAction extends Action
             $mail->isSMTP();  // telling the class to use SMTP
             $rec1 = "thetenebrax23@gmail.com"; //receiver. email addresses to which u want to send the mail.
             $mail->AddAddress($rec1);
-            $mail->Subject = $fields->subject;
-            $mail->Body = $fields->content;
+            $mail->Subject = $fields->template == null ? $fields->subject : Template::query()->where('name','=',$fields->template)->pluck('subject');
+            $mail->Body = $fields->template == null ? $fields->content : Template::query()->where('name','=',$fields->template)->pluck('body');
             $mail->WordWrap = 200;
             if (!$mail->Send()) {
                 echo 'Message was not sent!.';
@@ -65,9 +67,12 @@ class SendEmailAction extends Action
      */
     public function fields()
     {
+        $options = with(Template::query()->pluck('name'));
+
         return [
             Text::make('Subject', 'subject'),
             Textarea::make('Content', 'content'),
+            Select::make('Template', 'template')->options($options)->nullable(true),
         ];
     }
 

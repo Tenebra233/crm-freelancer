@@ -1,5 +1,7 @@
 <?php
 
+use devmtm\NovaCustomViews\NovaCustomViewsServiceProvider;
+
 return [
 
     /*

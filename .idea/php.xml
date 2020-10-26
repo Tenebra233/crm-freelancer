@@ -135,6 +135,10 @@
       <path value="$PROJECT_DIR$/vendor/benjaminhirsch/nova-slug-field" />
       <path value="$PROJECT_DIR$/vendor/rurbani/email-sender" />
       <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+      <path value="$PROJECT_DIR$/vendor/kirschbaum-development/nova-mail" />
+      <path value="$PROJECT_DIR$/vendor/rurbani/custom-view-tool" />
+      <path value="$PROJECT_DIR$/vendor/rurbani/custom-view-asset" />
+      <path value="$PROJECT_DIR$/vendor/rurbani/email-sender-tool" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

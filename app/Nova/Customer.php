@@ -3,16 +3,15 @@
 namespace App\Nova;
 
 use App\Nova\Actions\SendEmailAction;
-use App\Nova\Actions\TestNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use KirschbaumDevelopment\NovaMail\Actions\SendMail;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Customer extends Resource
 {
@@ -114,7 +113,7 @@ class Customer extends Resource
     public function actions(Request $request)
     {
         return [
-            new SendEmailAction()
+            new SendEmailAction
         ];
     }
 }

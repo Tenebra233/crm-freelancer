@@ -11,7 +11,15 @@
         "build-notifications": "cd nova-components/Notifications && npm run dev",
         "build-notifications-prod": "cd nova-components/Notifications && npm run prod",
         "build-email-sender": "cd nova-components/EmailSender && npm run dev",
-        "build-email-sender-prod": "cd nova-components/EmailSender && npm run prod"
+        "build-email-sender-prod": "cd nova-components/EmailSender && npm run prod",
+        "build-user": "cd nova-components/views/user && npm run dev",
+        "build-user-prod": "cd nova-components/views/user && npm run prod",
+        "build-custom-view-tool": "cd nova-components/CustomViewTool && npm run dev",
+        "build-custom-view-tool-prod": "cd nova-components/CustomViewTool && npm run prod",
+        "build-custom-view-asset": "cd nova-components/CustomViewAsset && npm run dev",
+        "build-custom-view-asset-prod": "cd nova-components/CustomViewAsset && npm run prod",
+        "build-email-sender-tool": "cd nova-components/EmailSenderTool && npm run dev",
+        "build-email-sender-tool-prod": "cd nova-components/EmailSenderTool && npm run prod"
     },
     "devDependencies": {
         "axios": "^0.19",
@@ -24,6 +32,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "pngquant-bin": "^6.0.0"
+        "pngquant-bin": "^6.0.0",
+        "vue-router": "^3.4.7"
     }
 }
