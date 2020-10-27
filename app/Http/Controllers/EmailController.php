@@ -13,19 +13,17 @@ class EmailController extends Controller
 {
     public function getCustomerEmail(Request $request)
     {
-        $body = $request->get('emailBody');
+
+        $body ='<html>'.$request->get('emailBody').'</html>';
         $subject = $request->get('emailSubject');
         $orderId = $request->get('orderId');
         $customerId = Order::query()->where('id', '=', $orderId)->pluck('customer_id')[0];
         $customerEmail = Customer::query()->where('id', '=', $customerId)->pluck('email')[0];
-        $headers = 'From: webmaster@example.com' . "\r\n" .
-            'Reply-To: webmaster@example.com' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-        $pippo = mail($customerEmail, $subject, $body, $headers);
-
+        
         ini_set("SMTP", "ssl://smtp.gmail.com");
         ini_set("smtp_port", "465"); //No further need to edit your configuration files.
         $mail = new PHPMailer();
+        $mail->IsHTML(true);
         $mail->SMTPAuth = true;
         $mail->Host = 'smtp.gmail.com';
         $mail->Port = 587;
@@ -39,8 +37,8 @@ class EmailController extends Controller
         $mail->AddAddress($rec1);
         $mail->Subject = $subject;
         $mail->Body = $body;
-//        $mail->Subject = $fields->template == null ? $fields->subject : Template::query()->where('name', '=', $fields->template)->pluck('subject');
-//        $mail->Body = $fields->template == null ? $fields->content : Template::query()->where('name', '=', $fields->template)->pluck('body');
+        //        $mail->Subject = $fields->template == null ? $fields->subject : Template::query()->where('name', '=', $fields->template)->pluck('subject');
+        //        $mail->Body = $fields->template == null ? $fields->content : Template::query()->where('name', '=', $fields->template)->pluck('body');
         $mail->WordWrap = 200;
         if (!$mail->Send()) {
             return 'Email not sent, error: ' . $mail->ErrorInfo;
