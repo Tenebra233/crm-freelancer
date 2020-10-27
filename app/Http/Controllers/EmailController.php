@@ -19,7 +19,7 @@ class EmailController extends Controller
         $orderId = $request->get('orderId');
         $customerId = Order::query()->where('id', '=', $orderId)->pluck('customer_id')[0];
         $customerEmail = Customer::query()->where('id', '=', $customerId)->pluck('email')[0];
-        
+
         ini_set("SMTP", "ssl://smtp.gmail.com");
         ini_set("smtp_port", "465"); //No further need to edit your configuration files.
         $mail = new PHPMailer();
@@ -30,7 +30,7 @@ class EmailController extends Controller
         $mail->setFrom('4deveterbo@gmail.com', 'Roberto Urbani');
         $mail->SMTPSecure = "ssl";
         $mail->Username = "4deveterbo@gmail.com"; //account with which you want to send mail. Or use this account. i dont care :-P
-        $mail->Password = "Gobbaqualegobba123."; //this account's password.
+        $mail->Password = "Maquestoeunmalocchio123."; //this account's password.
         $mail->Port = "465";
         $mail->isSMTP();  // telling the class to use SMTP
         $rec1 = $customerEmail; //receiver. email addresses to which u want to send the mail.

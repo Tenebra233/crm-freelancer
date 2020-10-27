@@ -1,25 +1,19 @@
 <template>
     <div id="form-main">
-
         <div id="form-div">
             <p class="subject">
                 <input name="name" type="text"
                        class="feedback-input" v-model="emailSubject" placeholder="Subject"
                        id="subject"/>
             </p>
-
             <div id="defaultRTE">
-                <ejs-richtexteditor  v-model="emailBody" ref="defaultRTE" :height="340">
+                <ejs-richtexteditor v-model="emailBody" ref="defaultRTE" :height="340">
 
                 </ejs-richtexteditor>
             </div>
 
             <p class="template">
-                <select name="template" v-model="selectedTemplate" @change="selectTemplateEvent()"
-                        class="feedback-input">
-                    <option v-for="(template) in getTemplateResponse">{{template}}</option>
-
-                </select>
+                <v-selectize v-model="selectedTemplate" :limit="3" :options="getTemplateResponse"/>
             </p>
 
 
@@ -36,17 +30,17 @@
 </template>
 
 <script>
-    import { RichTextEditorPlugin, Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar } from "@syncfusion/ej2-vue-richtexteditor";
+    import {Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar} from "@syncfusion/ej2-vue-richtexteditor";
+
     export default {
 
         provide: {
-            richtexteditor:[Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar]
+            richtexteditor: [Toolbar, Link, Image, Count, HtmlEditor, QuickToolbar]
         },
 
         props: ['resourceName', 'resourceId', 'panel'],
 
-        data()
-        {
+        data() {
             return {
 
                 emailSentResponse: '',
@@ -58,31 +52,34 @@
             }
         },
 
-        mounted()
-        {
+        mounted() {
             // this.getTemplate();
             this.getTemplate();
         },
+
+        watch: {
+            selectedTemplate: function (newQuestion, oldQuestion) {
+                this.answer = 'Waiting for you to stop typing...',
+                this.selectTemplateEvent()
+            }
+        },
+
         methods: {
-            sendEmail()
-            {
+            sendEmail() {
                 Nova.request().post('/nova-vendor/email-sender-tool/getCustomerEmail', {
                     'orderId': this.resourceId,
                     'emailBody': this.emailBody,
                     'emailSubject': this.emailSubject,
                 })
-                    .then((response) =>
-                    {
+                    .then((response) => {
                         this.emailSentResponse = response.data;
                     });
             },
-            selectTemplateEvent()
-            {
+            selectTemplateEvent() {
                 Nova.request().post('/nova-vendor/email-sender-tool/selectTemplateEvent', {
                     'name': this.selectedTemplate,
                 })
-                    .then((response) =>
-                    {
+                    .then((response) => {
                         this.selectedTemplateResponse = response.data;
                         this.emailSubject = this.selectedTemplateResponse['subject'];
                         this.emailBody = this.selectedTemplateResponse['body'];
@@ -90,11 +87,9 @@
                     });
             },
 
-            getTemplate()
-            {
+            getTemplate() {
                 Nova.request().get('/nova-vendor/email-sender-tool/getTemplate')
-                    .then((response) =>
-                    {
+                    .then((response) => {
                         this.getTemplateResponse = response.data;
                     });
             }
@@ -103,7 +98,6 @@
     }
 </script>
 <style>
-
 
 
     @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
