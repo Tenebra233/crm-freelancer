@@ -8,7 +8,6 @@
             </p>
             <div id="defaultRTE">
                 <ejs-richtexteditor v-model="emailBody" ref="defaultRTE" :height="340">
-
                 </ejs-richtexteditor>
             </div>
 
@@ -16,10 +15,8 @@
                 <v-selectize v-model="selectedTemplate" :limit="3" :options="getTemplateResponse"/>
             </p>
 
-
             <div class="submit">
-                <button @click="sendEmail()" value="SEND" id="button-blue">SEND</button>
-                <div class="ease"></div>
+                <ejs-progressbutton ref="progressBtn" :enableProgress="false" v-on:click.native="sendEmail()" content="SEND"></ejs-progressbutton>
             </div>
             <br>
             <br>
@@ -40,9 +37,9 @@
 
         props: ['resourceName', 'resourceId', 'panel'],
 
-        data() {
+        data()
+        {
             return {
-
                 emailSentResponse: '',
                 emailBody: '',
                 emailSubject: '',
@@ -52,34 +49,40 @@
             }
         },
 
-        mounted() {
+        mounted()
+        {
             // this.getTemplate();
             this.getTemplate();
         },
 
         watch: {
-            selectedTemplate: function (newQuestion, oldQuestion) {
-                this.answer = 'Waiting for you to stop typing...',
+            selectedTemplate: function (newQuestion, oldQuestion)
+            {
                 this.selectTemplateEvent()
             }
         },
 
         methods: {
-            sendEmail() {
+            sendEmail()
+            {
                 Nova.request().post('/nova-vendor/email-sender-tool/getCustomerEmail', {
                     'orderId': this.resourceId,
                     'emailBody': this.emailBody,
                     'emailSubject': this.emailSubject,
                 })
-                    .then((response) => {
+                    .then((response) =>
+                    {
                         this.emailSentResponse = response.data;
+                        this.$refs.progressBtn.stop();
                     });
             },
-            selectTemplateEvent() {
+            selectTemplateEvent()
+            {
                 Nova.request().post('/nova-vendor/email-sender-tool/selectTemplateEvent', {
                     'name': this.selectedTemplate,
                 })
-                    .then((response) => {
+                    .then((response) =>
+                    {
                         this.selectedTemplateResponse = response.data;
                         this.emailSubject = this.selectedTemplateResponse['subject'];
                         this.emailBody = this.selectedTemplateResponse['body'];
@@ -87,9 +90,11 @@
                     });
             },
 
-            getTemplate() {
+            getTemplate()
+            {
                 Nova.request().get('/nova-vendor/email-sender-tool/getTemplate')
-                    .then((response) => {
+                    .then((response) =>
+                    {
                         this.getTemplateResponse = response.data;
                     });
             }
@@ -202,9 +207,6 @@
         font-size: 24px;
         padding-top: 22px;
         padding-bottom: 22px;
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-        transition: all 0.3s;
         margin-top: -4px;
         font-weight: 700;
     }

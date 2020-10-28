@@ -16,6 +16,7 @@
     "dependencies": {
         "@isneezy/vue-selectize": "^0.6.1",
         "@syncfusion/ej2-vue-richtexteditor": "^18.3.42",
+        "@syncfusion/ej2-vue-splitbuttons": "^18.3.40",
         "selectize": "^0.12.6",
         "vue": "^2.5.0"
     }
