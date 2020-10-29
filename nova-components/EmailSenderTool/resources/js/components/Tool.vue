@@ -16,7 +16,14 @@
             </p>
 
             <div class="submit">
-                <ejs-progressbutton ref="progressBtn" :enableProgress="false" v-on:click.native="sendEmail()" content="SEND"></ejs-progressbutton>
+                <vue-button-spinner
+                    v-on:click.native="sendEmail"
+                    id="sendEmail"
+                    :is-loading="isLoading"
+                    :disabled="isLoading"
+                    :status="status">
+                    <span>SEND</span>
+                </vue-button-spinner>
             </div>
             <br>
             <br>
@@ -46,6 +53,8 @@
                 selectedTemplate: '',
                 getTemplateResponse: [],
                 selectedTemplateResponse: '',
+                isLoading: false,
+                status: '',
             }
         },
 
@@ -53,6 +62,7 @@
         {
             // this.getTemplate();
             this.getTemplate();
+
         },
 
         watch: {
@@ -61,10 +71,10 @@
                 this.selectTemplateEvent()
             }
         },
-
         methods: {
             sendEmail()
             {
+                this.isLoading = true;
                 Nova.request().post('/nova-vendor/email-sender-tool/getCustomerEmail', {
                     'orderId': this.resourceId,
                     'emailBody': this.emailBody,
@@ -72,20 +82,28 @@
                 })
                     .then((response) =>
                     {
+
+
                         this.emailSentResponse = response.data;
-                        this.$refs.progressBtn.stop();
+                        this.isLoading = false;
+
+
                     });
             },
             selectTemplateEvent()
             {
+
                 Nova.request().post('/nova-vendor/email-sender-tool/selectTemplateEvent', {
                     'name': this.selectedTemplate,
                 })
                     .then((response) =>
                     {
+
                         this.selectedTemplateResponse = response.data;
                         this.emailSubject = this.selectedTemplateResponse['subject'];
                         this.emailBody = this.selectedTemplateResponse['body'];
+
+
 
                     });
             },
@@ -196,7 +214,7 @@
         background-color: white;
     }
 
-    #button-blue {
+    #sendEmail {
         font-family: 'Montserrat', Arial, Helvetica, sans-serif;
         float: left;
         width: 100%;
@@ -211,7 +229,7 @@
         font-weight: 700;
     }
 
-    #button-blue:hover {
+    #sendEmail:hover {
         background-color: rgba(0, 0, 0, 0);
         color: #0493bd;
     }
