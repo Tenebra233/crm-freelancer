@@ -90,6 +90,11 @@
 
                     });
             },
+
+            sendNotification(){
+                Nova.request().post('/nova-vendor/email-sender-tool/push');
+            },
+
             selectTemplateEvent()
             {
 

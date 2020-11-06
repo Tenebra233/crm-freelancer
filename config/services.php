@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'pusher' => [
+        'beams_instance_id' => 'acde3300-a57b-4805-9817-00eea5b5ece5',
+        'beams_secret_key' => '1ADA5380FA3A63DAD034C5B5AA0CEF39284A2DD18D9407CAAD7DED246310D569',
+    ],
+
 ];

@@ -13,11 +13,11 @@
         },
         {
             "type": "path",
-            "url": "./nova-components/Notifications"
+            "url": "./nova-components/EmailSenderTool"
         },
         {
             "type": "path",
-            "url": "./nova-components/EmailSenderTool"
+            "url": "./nova-components/GlobalJs"
         }
     ],
     "license": "MIT",
@@ -29,13 +29,15 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
         "kirschbaum-development/nova-mail": "^1.0",
-        "laravel-notification-channels/webpush": "^5.0",
+        "laravel-notification-channels/pusher-push-notifications": "^2.2",
         "laravel/framework": "^7.24",
         "laravel/nova": "~3.0",
         "laravel/tinker": "^2.0",
         "moontoast/math": "1.1.2 as 1.999.999",
         "phpmailer/phpmailer": "^6.1",
+        "pusher/pusher-php-server": "~3.0",
         "rurbani/email-sender-tool": "*",
+        "rurbani/global-js": "*",
         "silvanite/novatoolpermissions": "^1.1",
         "spatie/once": "^1.1 | ^2.0",
         "titasgailius/search-relations": "^1.0"

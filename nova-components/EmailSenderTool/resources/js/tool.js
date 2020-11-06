@@ -10,7 +10,11 @@ import {
 import VSelectize from '@isneezy/vue-selectize'
 import VueButtonSpinner from 'vue-button-spinner';
 
+
+
+
 Nova.booting((Vue, router, store) => {
+
 
     Vue.component('email-sender-tool', require('./components/Tool'));
     Vue.component('v-selectize', VSelectize);

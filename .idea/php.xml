@@ -69,7 +69,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
@@ -80,7 +79,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/routing" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
-      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
       <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
       <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
       <path value="$PROJECT_DIR$/vendor/league/flysystem" />
@@ -115,17 +113,6 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/symfony/intl" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
-      <path value="$PROJECT_DIR$/vendor/minishlink/web-push" />
-      <path value="$PROJECT_DIR$/vendor/spomky-labs/base64url" />
-      <path value="$PROJECT_DIR$/vendor/laravel-notification-channels/webpush" />
-      <path value="$PROJECT_DIR$/vendor/fgrosse/phpasn1" />
-      <path value="$PROJECT_DIR$/vendor/web-token/jwt-core" />
-      <path value="$PROJECT_DIR$/vendor/web-token/jwt-signature" />
-      <path value="$PROJECT_DIR$/vendor/web-token/jwt-signature-algorithm-ecdsa" />
-      <path value="$PROJECT_DIR$/vendor/web-token/jwt-util-ecc" />
-      <path value="$PROJECT_DIR$/vendor/web-token/jwt-key-mgmt" />
-      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
-      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/vendor/rurbani/notifications" />
       <path value="$PROJECT_DIR$/vendor/laravel/nova-app" />
       <path value="$PROJECT_DIR$/vendor/titasgailius/search-relations" />
@@ -139,6 +126,12 @@
       <path value="$PROJECT_DIR$/vendor/rurbani/custom-view-tool" />
       <path value="$PROJECT_DIR$/vendor/rurbani/custom-view-asset" />
       <path value="$PROJECT_DIR$/vendor/rurbani/email-sender-tool" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
+      <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
+      <path value="$PROJECT_DIR$/vendor/rurbani/global-js" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/laravel-notification-channels/pusher-push-notifications" />
+      <path value="$PROJECT_DIR$/vendor/pusher/pusher-push-notifications" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

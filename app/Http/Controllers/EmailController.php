@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Events\EmailSent;
 use App\Order;
 use App\Template;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Response;
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -14,7 +17,7 @@ class EmailController extends Controller
     public function getCustomerEmail(Request $request)
     {
 
-        $body ='<html>'.$request->get('emailBody').'</html>';
+        $body = '<html>' . $request->get('emailBody') . '</html>';
         $subject = $request->get('emailSubject');
         $orderId = $request->get('orderId');
         $customerId = Order::query()->where('id', '=', $orderId)->pluck('customer_id')[0];
@@ -43,6 +46,19 @@ class EmailController extends Controller
         if (!$mail->Send()) {
             return 'Email not sent, error: ' . $mail->ErrorInfo;
         } else {
+            $beamsClient = new \Pusher\PushNotifications\PushNotifications(array(
+                "instanceId" => "acde3300-a57b-4805-9817-00eea5b5ece5",
+                "secretKey" => "1ADA5380FA3A63DAD034C5B5AA0CEF39284A2DD18D9407CAAD7DED246310D569",
+            ));
+
+            $publishResponse = $beamsClient->publishToInterests(
+                array("hello"),
+                array("web" => array("notification" => array(
+                    "title" => "Hello",
+                    "body" => "Hello, World!",
+                    "deep_link" => "https://www.pusher.com",
+                )),
+                ));
             return 'Email sent correctly';
         }
     }

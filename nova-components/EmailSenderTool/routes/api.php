@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::post('/getCustomerEmail', 'App\\Http\\Controllers\\EmailController@getCustomerEmail');
 Route::post('/selectTemplateEvent', 'App\\Http\\Controllers\\EmailController@selectTemplateEvent');
 Route::get('/getTemplate', 'App\\Http\\Controllers\\EmailController@getTemplate');
+//Route::post('/push','App\\Http\\Controllers\\PushController@push')->name('push');
